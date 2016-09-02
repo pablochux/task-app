@@ -109,6 +109,36 @@ ul > li {
 .u-full-width {
   width: 100%; }
 
+body {
+  padding-top: 75px;
+  background-color: #E9EDED;
+  font-family: 'Roboto-Regular'; }
+
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0; }
+  1% {
+    display: block;
+    opacity: 0; }
+  100% {
+    display: block;
+    opacity: 1; } }
+
+@keyframes fadeFromUp {
+  0% {
+    transform: translateY(-100px); }
+  70% {
+    transform: translateY(5px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes test {
+  0%, 50% {
+    transform: translateY(-50px); }
+  100% {
+    transform: translateY(0); } }
+
 .header {
   position: fixed;
   top: 0;
@@ -117,7 +147,8 @@ ul > li {
   height: 75px;
   padding: 15px 10px;
   background-color: #21AF8F;
-  z-index: 3; }
+  z-index: 3;
+  animation: fadeInFromNone 1s ease-in-out; }
   .header__input {
     width: 100%;
     height: 100%;
@@ -145,3 +176,84 @@ ul > li {
       width: 17px;
       height: 16px;
       transform: translate(-50%, -50%); }
+
+.task-list {
+  width: 100%;
+  padding: 15px;
+  animation: fadeFromUp 1s ease-in-out, fadeInFromNone 1s ease-in-out; }
+  .task-list--new-task-animation {
+    transform: translateY(-50px); }
+
+.task {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #FFF;
+  line-height: 40px;
+  box-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+  animation: fadeFromUp 850ms ease-in-out, fadeInFromNone 850ms ease-in-out; }
+  .task--completed {
+    opacity: 0.5; }
+  .task__title {
+    display: inline-block;
+    width: calc(100% - 100px);
+    padding-left: 15px;
+    color: #666;
+    font-family: 'Roboto-Light';
+    font-size: 1rem;
+    letter-spacing: 0; }
+
+.task-actions {
+  width: 100px;
+  height: 40px;
+  float: right; }
+  .task-actions__button {
+    position: relative;
+    width: 50px;
+    height: 40px;
+    float: left;
+    border: none;
+    outline: none; }
+    .task-actions__button svg {
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -11px 0 0 -11px;
+      cursor: pointer; }
+    .task-actions__button path {
+      transition: fill 0.2s ease; }
+    .task-actions__button--delete {
+      padding: none; }
+      .task-actions__button--delete:before {
+        content: '';
+        height: 1px;
+        width: 20px;
+        background-color: #E9EDED;
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        transform: rotate(90deg); }
+      .task-actions__button--delete:hover path {
+        fill: #E96E6E; }
+    .task-actions__button--complete {
+      margin: -9px 0 0 -11px;
+      padding: 4px; }
+      .task-actions__button--complete svg {
+        border-radius: 11px;
+        border: 1.5px solid #25b99a;
+        width: 19px;
+        height: 19px; }
+
+.no-task {
+  animation: fadeInFromNone 1s ease-in-out; }
+  .no-task--hide {
+    transition: opacity 500ms ease-in-out;
+    opacity: 0; }
+  .no-task__text {
+    padding-top: 40px;
+    color: #BFBFBF;
+    font-weight: 100;
+    text-align: center; }
