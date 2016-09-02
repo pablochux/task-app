@@ -82,26 +82,15 @@
         & svg{
             position: absolute;
             top: 50%;
-            left: 50%;
-            margin: -11px 0 0 -11px;
+            bottom: 50%;
+            transform: translate(-50%, -50%);
 
             cursor: pointer;
         }
-        & path{
-            transition: fill 0.2s ease;
-        }
+
         &--delete{
-            // position: relative;
-            //
-            // padding: 0 15px;
-            // border-right: 1px solid #E9EDED;
-            //
-            // & svg{
-            //     position: absolute;
-            //     top: 50%;
-            //     bottom: 50%;
-            //     transform: translate(-50%, -50%);
-            // }
+
+            // Vertical Line
             &:before{
                 content: '';
                 height: 1px;
@@ -112,19 +101,50 @@
                 right: -10px;
                 transform: rotate(90deg);
             }
-
-            &:hover path{
-                fill: #E96E6E;
-            }
         }
         &--complete{
-            & svg{
-                width: 19px;
-                height: 19px;
-                margin: -9px 0 0 -11px;
-            }
+
         }
 
 
+    }
+}
+
+.task-icon{
+    &:hover{
+        & .task-icon__background{
+            fill: #26B999;
+        }
+
+        & .task-icon__tick{
+            fill: #FFF;
+        }
+    }
+
+    //Elements
+    &__background,
+    &__tick{
+        transition: fill 0.2s ease;
+    }
+
+    &__background{
+        fill: #FFF;
+    }
+
+    &__tick{
+        fill: #26B999;
+    }
+}
+
+.trash-icon{
+
+    &:hover path{
+        fill: #E96E6E;
+    }
+
+    & path{
+        transition: fill 0.2s ease;
+
+        fill: #C1CDCB;
     }
 }

@@ -223,11 +223,9 @@ body {
     .task-actions__button svg {
       position: absolute;
       top: 50%;
-      left: 50%;
-      margin: -11px 0 0 -11px;
+      bottom: 50%;
+      transform: translate(-50%, -50%);
       cursor: pointer; }
-    .task-actions__button path {
-      transition: fill 0.2s ease; }
     .task-actions__button--delete:before {
       content: '';
       height: 1px;
@@ -237,12 +235,28 @@ body {
       top: 20px;
       right: -10px;
       transform: rotate(90deg); }
-    .task-actions__button--delete:hover path {
-      fill: #E96E6E; }
-    .task-actions__button--complete svg {
-      width: 19px;
-      height: 19px;
-      margin: -9px 0 0 -11px; }
+
+.task-icon:hover .task-icon__background {
+  fill: #26B999; }
+
+.task-icon:hover .task-icon__tick {
+  fill: #FFF; }
+
+.task-icon__background, .task-icon__tick {
+  transition: fill 0.2s ease; }
+
+.task-icon__background {
+  fill: #FFF; }
+
+.task-icon__tick {
+  fill: #26B999; }
+
+.trash-icon:hover path {
+  fill: #E96E6E; }
+
+.trash-icon path {
+  transition: fill 0.2s ease;
+  fill: #C1CDCB; }
 
 .no-task {
   animation: fadeInFromNone 1s ease-in-out; }
