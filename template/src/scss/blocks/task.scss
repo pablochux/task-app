@@ -14,6 +14,14 @@
         transform: translateY(-50px);
         // animation: test 20ms ease-in-out;
     }
+
+    &--deleted{
+        display: none;
+    }
+}
+
+.task-separator{
+    width: 180px;
 }
 
 .task{
@@ -72,8 +80,6 @@
         outline: none;
 
         & svg{
-            width: 22px;
-            height: 22px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -85,7 +91,6 @@
             transition: fill 0.2s ease;
         }
         &--delete{
-            padding: none;
             // position: relative;
             //
             // padding: 0 15px;
@@ -113,14 +118,10 @@
             }
         }
         &--complete{
-            margin: -9px 0 0 -11px;
-            padding: 4px;
-
             & svg{
-                border-radius: 11px;
-                border: 1.5px solid #25b99a;
                 width: 19px;
                 height: 19px;
+                margin: -9px 0 0 -11px;
             }
         }
 

@@ -183,6 +183,11 @@ body {
   animation: fadeFromUp 1s ease-in-out, fadeInFromNone 1s ease-in-out; }
   .task-list--new-task-animation {
     transform: translateY(-50px); }
+  .task-list--deleted {
+    display: none; }
+
+.task-separator {
+  width: 180px; }
 
 .task {
   width: 100%;
@@ -216,8 +221,6 @@ body {
     border: none;
     outline: none; }
     .task-actions__button svg {
-      width: 22px;
-      height: 22px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -225,27 +228,21 @@ body {
       cursor: pointer; }
     .task-actions__button path {
       transition: fill 0.2s ease; }
-    .task-actions__button--delete {
-      padding: none; }
-      .task-actions__button--delete:before {
-        content: '';
-        height: 1px;
-        width: 20px;
-        background-color: #E9EDED;
-        position: absolute;
-        top: 20px;
-        right: -10px;
-        transform: rotate(90deg); }
-      .task-actions__button--delete:hover path {
-        fill: #E96E6E; }
-    .task-actions__button--complete {
-      margin: -9px 0 0 -11px;
-      padding: 4px; }
-      .task-actions__button--complete svg {
-        border-radius: 11px;
-        border: 1.5px solid #25b99a;
-        width: 19px;
-        height: 19px; }
+    .task-actions__button--delete:before {
+      content: '';
+      height: 1px;
+      width: 20px;
+      background-color: #E9EDED;
+      position: absolute;
+      top: 20px;
+      right: -10px;
+      transform: rotate(90deg); }
+    .task-actions__button--delete:hover path {
+      fill: #E96E6E; }
+    .task-actions__button--complete svg {
+      width: 19px;
+      height: 19px;
+      margin: -9px 0 0 -11px; }
 
 .no-task {
   animation: fadeInFromNone 1s ease-in-out; }
