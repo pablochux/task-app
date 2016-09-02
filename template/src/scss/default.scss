@@ -38,7 +38,7 @@
 // Colour Variables
 //------------------------------
 // $main-text-color: ;
-// $main-bg-color: ;
+$main-bg-color: #E9EDED;
 
 //------------------------------
 // URLS Variables
@@ -49,7 +49,10 @@ $img: '../img';
 // Default styles
 //------------------------------
 body{
-	// background-color: $main-bg-color;
+	padding-top: 75px; // Correct for the fixed header
+
+	background-color: $main-bg-color;
 	// color: $main-text-color;
-	// font-family: 'Roboto-Regular';
+
+	font-family: 'Roboto-Regular';
 }
