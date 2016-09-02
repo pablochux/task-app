@@ -1,0 +1,129 @@
+//-----------------------
+// Task
+//-----------------------
+.task-list{
+    width: 100%;
+
+    padding: 15px;
+
+    animation: fadeFromUp 1s ease-in-out,
+                fadeInFromNone 1s ease-in-out;
+
+    &--new-task-animation{
+        // transition: transform 200ms ease-in-out;
+        transform: translateY(-50px);
+        // animation: test 20ms ease-in-out;
+    }
+}
+
+.task{
+    width: 100%;
+    height: 40px;
+
+    margin-bottom: 10px;
+
+    border-radius: 5px;
+
+    background-color: #FFF;
+
+    line-height: 40px;
+
+    box-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+
+    animation: fadeFromUp 850ms ease-in-out,
+                fadeInFromNone 850ms ease-in-out;
+
+    // animation: fadeInFromNone 500ms ease-in-out;
+
+    &--completed{
+        opacity: 0.5;
+    }
+
+    // Elements
+    &__title{
+        display: inline-block;
+
+        width: calc(100% - 100px);
+
+        padding-left: 15px;
+
+        color: #666;
+        font-family: 'Roboto-Light';
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+}
+
+.task-actions{
+    width: 100px;
+    height: 40px;
+
+    float: right;
+
+    &__button{
+        position: relative;
+
+        width: 50px;
+        height: 40px;
+
+        float: left;
+
+        border: none;
+        outline: none;
+
+        & svg{
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -11px 0 0 -11px;
+
+            cursor: pointer;
+        }
+        & path{
+            transition: fill 0.2s ease;
+        }
+        &--delete{
+            padding: none;
+            // position: relative;
+            //
+            // padding: 0 15px;
+            // border-right: 1px solid #E9EDED;
+            //
+            // & svg{
+            //     position: absolute;
+            //     top: 50%;
+            //     bottom: 50%;
+            //     transform: translate(-50%, -50%);
+            // }
+            &:before{
+                content: '';
+                height: 1px;
+                width: 20px;
+                background-color: #E9EDED;
+                position: absolute;
+                top: 20px;
+                right: -10px;
+                transform: rotate(90deg);
+            }
+
+            &:hover path{
+                fill: #E96E6E;
+            }
+        }
+        &--complete{
+            margin: -9px 0 0 -11px;
+            padding: 4px;
+
+            & svg{
+                border-radius: 11px;
+                border: 1.5px solid #25b99a;
+                width: 19px;
+                height: 19px;
+            }
+        }
+
+
+    }
+}

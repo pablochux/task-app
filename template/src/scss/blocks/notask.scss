@@ -1,0 +1,20 @@
+//-----------------------
+// No task information text
+//-----------------------
+.no-task{
+
+    animation: fadeInFromNone 1s ease-in-out;
+
+    &--hide{
+        transition: opacity 500ms ease-in-out;
+
+        opacity: 0;
+    }
+    &__text{
+        padding-top: 40px;
+
+        color: #BFBFBF;
+        font-weight: 100;
+        text-align: center;
+    }
+}
