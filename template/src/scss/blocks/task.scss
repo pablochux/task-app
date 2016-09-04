@@ -15,14 +15,30 @@
         // animation: test 20ms ease-in-out;
     }
 
-    &--deleted{
-        display: none;
+    &--completed{
+        opacity: 0.5;
+
+        // task list separator
+        &:not(:empty)::before{
+            position: absolute;
+            left: 50%;
+
+            width: 180px;
+            height: 1px;
+
+            margin-left: -90px;
+
+            background-color: #979797;
+
+            content: '';
+        }
+        // Margin with the task-list separator
+        & .task:first-child{
+            margin-top: 30px;
+        }
     }
 }
 
-.task-separator{
-    width: 180px;
-}
 
 .task{
     width: 100%;
@@ -121,6 +137,9 @@
         }
     }
 
+    // Modifiers
+
+
     //Elements
     &__background,
     &__tick{
@@ -133,6 +152,26 @@
 
     &__tick{
         fill: #26B999;
+    }
+
+    &--completed{
+        &:hover{
+            & .task-icon__background{
+                fill: #FFF;
+            }
+
+            & .task-icon__tick{
+                fill: #26B999;
+            }
+        }
+
+        &__background{
+            fill: #26B999;
+        }
+
+        &__tick{
+            fill: #FFF;
+        }
     }
 }
 

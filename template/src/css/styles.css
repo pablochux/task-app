@@ -183,11 +183,18 @@ body {
   animation: fadeFromUp 1s ease-in-out, fadeInFromNone 1s ease-in-out; }
   .task-list--new-task-animation {
     transform: translateY(-50px); }
-  .task-list--deleted {
-    display: none; }
-
-.task-separator {
-  width: 180px; }
+  .task-list--completed {
+    opacity: 0.5; }
+    .task-list--completed:not(:empty)::before {
+      position: absolute;
+      left: 50%;
+      width: 180px;
+      height: 1px;
+      margin-left: -90px;
+      background-color: #979797;
+      content: ''; }
+    .task-list--completed .task:first-child {
+      margin-top: 30px; }
 
 .task {
   width: 100%;
@@ -250,6 +257,18 @@ body {
 
 .task-icon__tick {
   fill: #26B999; }
+
+.task-icon--completed:hover .task-icon__background {
+  fill: #FFF; }
+
+.task-icon--completed:hover .task-icon__tick {
+  fill: #26B999; }
+
+.task-icon--completed__background {
+  fill: #26B999; }
+
+.task-icon--completed__tick {
+  fill: #FFF; }
 
 .trash-icon:hover path {
   fill: #E96E6E; }
