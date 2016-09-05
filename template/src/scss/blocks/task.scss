@@ -1,3 +1,13 @@
+@charset 'UTF-8';
+
+//-----------------------
+// Variables
+//-----------------------
+$task-line-separator: #979797;
+$task-text-title: #666;
+$task-actions-separator: #E9EDED;
+$task-trash-icon: #C1CDCB;
+
 //-----------------------
 // Task
 //-----------------------
@@ -18,7 +28,7 @@
     &--completed{
         opacity: 0.5;
 
-        // task list separator
+        // Task list line separator
         &:not(:empty)::before{
             position: absolute;
             left: 50%;
@@ -28,13 +38,9 @@
 
             margin-left: -90px;
 
-            background-color: #979797;
+            background-color: $task-line-separator;
 
             content: '';
-        }
-        // Margin with the task-list separator
-        & .task:first-child{
-            margin-top: 30px;
         }
     }
 }
@@ -48,7 +54,7 @@
 
     border-radius: 5px;
 
-    background-color: #FFF;
+    background-color: $main-bg-color;
 
     line-height: 40px;
 
@@ -71,10 +77,16 @@
 
         padding-left: 15px;
 
-        color: #666;
+        color: $task-text-title;
         font-family: 'Roboto-Light';
         font-size: 1rem;
         letter-spacing: 0;
+    }
+
+    // Other styles
+    // Margin with the task-list separator
+    .task-list--completed &:first-child{
+        margin-top: 30px;
     }
 }
 
@@ -105,23 +117,22 @@
         }
 
         &--delete{
-
             // Vertical Line
-            &:before{
-                content: '';
-                height: 1px;
-                width: 20px;
-                background-color: #E9EDED;
+            &::before{
                 position: absolute;
                 top: 20px;
                 right: -10px;
+
+                width: 20px;
+                height: 1px;
+
                 transform: rotate(90deg);
+
+                background-color: $task-actions-separator;
+
+                content: '';
             }
         }
-        &--complete{
-
-        }
-
 
     }
 }
@@ -129,11 +140,11 @@
 .task-icon{
     &:hover{
         & .task-icon__background{
-            fill: #26B999;
+            fill: $default-green;
         }
 
         & .task-icon__tick{
-            fill: #FFF;
+            fill: $main-bg-color;
         }
     }
 
@@ -147,43 +158,45 @@
     }
 
     &__background{
-        fill: #FFF;
+        fill: $main-bg-color;
     }
 
     &__tick{
-        fill: #26B999;
+        fill: $default-green;
     }
 
     &--completed{
         &:hover{
             & .task-icon__background{
-                fill: #FFF;
+                fill: $main-bg-color;
             }
 
             & .task-icon__tick{
-                fill: #26B999;
+                fill: $default-green;
             }
         }
 
         &__background{
-            fill: #26B999;
+            fill: $default-green;
         }
 
         &__tick{
-            fill: #FFF;
+            fill: $main-bg-color;
         }
     }
 }
 
 .trash-icon{
 
-    &:hover path{
-        fill: #E96E6E;
+    &:hover{
+        path{
+            fill: #E96E6E;
+        }
     }
 
     & path{
         transition: fill 0.2s ease;
 
-        fill: #C1CDCB;
+        fill: $task-trash-icon;
     }
 }

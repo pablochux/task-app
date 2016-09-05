@@ -1,3 +1,10 @@
+@charset 'UTF-8';
+
+//-----------------------
+// Variables
+//-----------------------
+$no-task-text: #BFBFBF;
+
 //-----------------------
 // No task information text
 //-----------------------
@@ -10,10 +17,11 @@
 
         opacity: 0;
     }
+
     &__text{
         padding-top: 40px;
 
-        color: #BFBFBF;
+        color: $no-task-text;
         font-weight: 100;
         text-align: center;
     }

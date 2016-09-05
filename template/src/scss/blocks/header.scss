@@ -3,7 +3,7 @@
 //-----------------------
 // Local Variables
 //-----------------------
-$header-text-color: #FFF;
+$header-text-color: $main-bg-color;
 $header-placeholder-color: rgba($header-text-color, 0.75);
 $header-bg-color: #21AF8F;
 $header-input-bg-color: #4DBFA5;
