@@ -41,11 +41,14 @@ function getInputValue(flag) {
 }
 
 function addNewTask(value) {
-    var taskList = document.getElementsByClassName('task-list')[0];
+    var taskList = document.getElementById('task-list'),
+        taskListCompleted = document.getElementById('task-list-completed');
     taskList.insertBefore(createTask(value), taskList.childNodes[0]);
     taskList.classList.add('task-list--new-task-animation');
+    taskListCompleted.classList.add('task-list--new-task-animation');
     setTimeout(function() {
         taskList.classList.remove('task-list--new-task-animation');
+        taskListCompleted.classList.remove('task-list--new-task-animation');
     }, 500);
 }
 
@@ -60,8 +63,9 @@ function removeTask() {
 }
 
 function checkNoTasks() {
-    var taskList = document.getElementById('task-list');
-    if (!taskList.hasChildNodes()) {
+    var taskList = document.getElementById('task-list'),
+        taskListCompleted = document.getElementById('task-list-completed');
+    if ((!taskList.hasChildNodes()) && (!taskListCompleted.hasChildNodes())) {
         var noTask = document.getElementById('no-task');
         noTask.classList.remove('u-hide');
         noTask.classList.remove('no-task--hide');
@@ -84,8 +88,9 @@ function createTask(value) {
     var task = document.createElement('li');
     task.classList.add('task');
     // Create .task__title
-    var taskTitle = document.createElement('p');
-    taskTitle.appendChild(document.createTextNode(value));
+    var taskTitle = document.createElement('input');
+    // Cambiar el atributo value a value
+    taskTitle.value = value;
     taskTitle.classList.add('task__title');
     task.appendChild(taskTitle);
     // Create .task-actions

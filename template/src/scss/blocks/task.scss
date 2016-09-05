@@ -3,7 +3,7 @@
 //-----------------------
 // Variables
 //-----------------------
-$task-line-separator: #979797;
+$task-line-separator: #D2D2D2;
 $task-text-title: #666;
 $task-actions-separator: #E9EDED;
 $task-trash-icon: #C1CDCB;
@@ -58,6 +58,8 @@ $task-bg-color: #FFF;
 
     margin-bottom: 10px;
 
+    padding-left: 13px;
+
     border-radius: 5px;
 
     background-color: $task-bg-color;
@@ -75,12 +77,18 @@ $task-bg-color: #FFF;
 
         width: calc(100% - 100px);
 
-        padding-left: 15px;
+        padding-left: 2px;
+        border: none;
+        outline: none;
 
         color: $task-text-title;
         font-family: 'Roboto-Light';
         font-size: 1rem;
         letter-spacing: 0;
+
+        &:focus {
+            border-bottom: 1px solid #E8E8E8;
+        }
     }
 
     // Other styles
@@ -144,7 +152,8 @@ $task-bg-color: #FFF;
 }
 
 .task-icon{
-    &:hover{
+    &:hover,
+    .task-action__button{
         & .task-icon__background{
             fill: $default-green;
         }
