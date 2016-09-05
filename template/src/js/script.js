@@ -8,36 +8,34 @@
  *
  */
 function getInputValue(flag) {
-    var value = document.getElementById('add-input').value;
-    if (value) {
+    var addInput = document.getElementById('add-input'),
+        addInputValue = addInput.value;
+    if (addInputValue) {
+        if (!document.getElementById('task-list').hasChildNodes()) {
+            // Hide "No task yet"
+            document.getElementsByClassName('no-task')[0].classList.add('no-task--hide');
+            // Permantly hide .no-text after the animation
+            setTimeout(function() {
+                document.getElementsByClassName('no-task')[0].classList.add('u-hide');
+            }, 499);
+
+            // Add styles, to not dropbown when a new task is created
+        }
         // REFACTOR
         // First task, hide no task yet
         if (flag) {
-            addNewTask(value);
-            tasks.push({
-                title: value
-            });
-            console.log(tasks);
+            addNewTask(addInputValue);
         } else {
-            // Hide "No task yet"
-            document.getElementsByClassName('no-task')[0].classList.add('no-task--hide');
-            setTimeout(function() {
-                document.getElementsByClassName('no-task')[0].classList.add('u-hide');
-            }, 500);
             // Wait for the animation to complete, then insert new task
             setTimeout(function() {
-                addNewTask(value);
+                addNewTask(addInputValue);
             }, 400);
         }
         // REFACTOR
     } else {
         console.log('Empty input');
     }
-}
-
-// Clean input value
-function cleanInputValue() {
-    var addInput = document.getElementById('add-input');
+    // Clean the input value
     addInput.value = '';
     addInput.select();
 }
@@ -57,7 +55,19 @@ function removeTask() {
         parent = item.parentNode;
 
     parent.removeChild(item);
+    // Check if task-list is empty to display
+    checkNoTasks();
 }
+
+function checkNoTasks() {
+    var taskList = document.getElementById('task-list');
+    if (!taskList.hasChildNodes()) {
+        var noTask = document.getElementById('no-task');
+        noTask.classList.remove('u-hide');
+        noTask.classList.remove('no-task--hide');
+    }
+}
+
 // Complete a certain task
 function completeTask() {
     var item = this.parentNode.parentNode,
@@ -67,7 +77,6 @@ function completeTask() {
     var target = (parent.id === 'task-list-completed') ? document.getElementById('task-list') : document.getElementById('task-list-completed');
     parent.removeChild(item);
     target.insertBefore(item, target.childNodes[0]);
-    console.log(target.childNodes);
 }
 
 function createTask(value) {
@@ -102,16 +111,6 @@ function createTask(value) {
 // ----------------------
 // Variables
 // ----------------------
-/*
- *   Task is an array of task objects.
- *   New tasks will be added like -> {title: value}
- *
- *
- */
-var tasks = [],
-    completedTasks = [],
-    deletedTasks = [];
-
 // REFACTOR
 var flag = false;
 
@@ -120,7 +119,6 @@ var flag = false;
 // ----------------------
 document.getElementById('add-button').addEventListener('click', function() {
     getInputValue(flag);
-    cleanInputValue();
     flag = true;
 });
 
@@ -128,7 +126,6 @@ document.addEventListener('keydown', function(event) {
     // keypress 13 -> Enter key
     if (event.which == 13) {
         getInputValue(flag);
-        cleanInputValue();
         flag = true;
     }
 });

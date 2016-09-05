@@ -7,6 +7,7 @@ $task-line-separator: #979797;
 $task-text-title: #666;
 $task-actions-separator: #E9EDED;
 $task-trash-icon: #C1CDCB;
+$task-bg-color: #FFF;
 
 //-----------------------
 // Task
@@ -15,6 +16,7 @@ $task-trash-icon: #C1CDCB;
     width: 100%;
 
     padding: 15px;
+    padding-bottom: 5px;
 
     animation: fadeFromUp 1s ease-in-out,
                 fadeInFromNone 1s ease-in-out;
@@ -26,8 +28,6 @@ $task-trash-icon: #C1CDCB;
     }
 
     &--completed{
-        opacity: 0.5;
-
         // Task list line separator
         &:not(:empty)::before{
             position: absolute;
@@ -41,10 +41,16 @@ $task-trash-icon: #C1CDCB;
             background-color: $task-line-separator;
 
             content: '';
+
+            animation: fadeInFromNone 850ms ease-in-out;
         }
     }
 }
 
+// .task-list--completed .task{
+//     animation: fadeFromUp 850ms ease-in-out,
+//                 fadeInFromNone--completed 850ms ease-in-out;
+// }
 
 .task{
     width: 100%;
@@ -54,7 +60,7 @@ $task-trash-icon: #C1CDCB;
 
     border-radius: 5px;
 
-    background-color: $main-bg-color;
+    background-color: $task-bg-color;
 
     line-height: 40px;
 
@@ -62,12 +68,6 @@ $task-trash-icon: #C1CDCB;
 
     animation: fadeFromUp 850ms ease-in-out,
                 fadeInFromNone 850ms ease-in-out;
-
-    // animation: fadeInFromNone 500ms ease-in-out;
-
-    &--completed{
-        opacity: 0.5;
-    }
 
     // Elements
     &__title{
@@ -87,6 +87,12 @@ $task-trash-icon: #C1CDCB;
     // Margin with the task-list separator
     .task-list--completed &:first-child{
         margin-top: 30px;
+    }
+
+    // Animation for completed tasks
+    .task-list--completed &{
+        opacity: 0.5;
+        animation: fadeInFromNone--completed 600ms ease-in-out;
     }
 }
 
@@ -144,31 +150,15 @@ $task-trash-icon: #C1CDCB;
         }
 
         & .task-icon__tick{
-            fill: $main-bg-color;
+            fill: $task-bg-color;
         }
     }
 
     // Modifiers
-
-
-    //Elements
-    &__background,
-    &__tick{
-        transition: fill 0.2s ease;
-    }
-
-    &__background{
-        fill: $main-bg-color;
-    }
-
-    &__tick{
-        fill: $default-green;
-    }
-
     &--completed{
         &:hover{
             & .task-icon__background{
-                fill: $main-bg-color;
+                fill: $task-bg-color;
             }
 
             & .task-icon__tick{
@@ -181,10 +171,25 @@ $task-trash-icon: #C1CDCB;
         }
 
         &__tick{
-            fill: $main-bg-color;
+            fill: $task-bg-color;
         }
     }
+
+    //Elements
+    &__background,
+    &__tick{
+        transition: fill 200ms ease;
+    }
+
+    &__background{
+        fill: $task-bg-color;
+    }
+
+    &__tick{
+        fill: $default-green;
+    }
 }
+
 
 .trash-icon{
 

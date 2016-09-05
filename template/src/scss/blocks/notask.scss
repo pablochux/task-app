@@ -9,13 +9,13 @@ $no-task-text: #BFBFBF;
 // No task information text
 //-----------------------
 .no-task{
-
     animation: fadeInFromNone 1s ease-in-out;
 
     &--hide{
-        transition: opacity 500ms ease-in-out;
-
+        // Animate, then apply .u-hide
         opacity: 0;
+
+        animation: fadeOff 500ms ease-in-out;
     }
 
     &__text{

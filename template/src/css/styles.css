@@ -125,17 +125,33 @@ body {
     display: block;
     opacity: 1; } }
 
+@keyframes fadeInFromNone--completed {
+  0% {
+    display: none;
+    opacity: 0; }
+  1% {
+    display: block;
+    opacity: 0; }
+  100% {
+    display: block;
+    opacity: 0.5; } }
+
+@keyframes fadeOff {
+  0% {
+    display: block;
+    opacity: 1; }
+  99% {
+    display: block;
+    opacity: 0; }
+  100% {
+    display: none;
+    opacity: 0; } }
+
 @keyframes fadeFromUp {
   0% {
     transform: translateY(-100px); }
   70% {
     transform: translateY(5px); }
-  100% {
-    transform: translateY(0); } }
-
-@keyframes test {
-  0%, 50% {
-    transform: translateY(-50px); }
   100% {
     transform: translateY(0); } }
 
@@ -157,10 +173,10 @@ body {
     border-radius: 5px 25px 25px 5px;
     outline: none;
     background-color: #4DBFA5;
-    color: #FFF;
+    color: #E9EDED;
     font-size: 18px; }
   .header__input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.75); }
+    color: rgba(233, 237, 237, 0.75); }
   .header__add-button {
     position: absolute;
     top: 15px;
@@ -168,33 +184,31 @@ body {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: #FFF; }
-    .header__add-button svg {
-      position: absolute;
-      top: 50%;
-      bottom: 50%;
-      width: 17px;
-      height: 16px;
-      transform: translate(-50%, -50%); }
+    background-color: #E9EDED; }
+  .header__add-button-svg {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    width: 17px;
+    height: 16px;
+    transform: translate(-50%, -50%); }
 
 .task-list {
   width: 100%;
   padding: 15px;
+  padding-bottom: 5px;
   animation: fadeFromUp 1s ease-in-out, fadeInFromNone 1s ease-in-out; }
   .task-list--new-task-animation {
     transform: translateY(-50px); }
-  .task-list--completed {
-    opacity: 0.5; }
-    .task-list--completed:not(:empty)::before {
-      position: absolute;
-      left: 50%;
-      width: 180px;
-      height: 1px;
-      margin-left: -90px;
-      background-color: #979797;
-      content: ''; }
-    .task-list--completed .task:first-child {
-      margin-top: 30px; }
+  .task-list--completed:not(:empty)::before {
+    position: absolute;
+    left: 50%;
+    width: 180px;
+    height: 1px;
+    margin-left: -90px;
+    background-color: #979797;
+    content: '';
+    animation: fadeInFromNone 850ms ease-in-out; }
 
 .task {
   width: 100%;
@@ -205,8 +219,6 @@ body {
   line-height: 40px;
   box-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
   animation: fadeFromUp 850ms ease-in-out, fadeInFromNone 850ms ease-in-out; }
-  .task--completed {
-    opacity: 0.5; }
   .task__title {
     display: inline-block;
     width: calc(100% - 100px);
@@ -215,6 +227,11 @@ body {
     font-family: 'Roboto-Light';
     font-size: 1rem;
     letter-spacing: 0; }
+  .task-list--completed .task:first-child {
+    margin-top: 30px; }
+  .task-list--completed .task {
+    opacity: 0.5;
+    animation: fadeInFromNone--completed 600ms ease-in-out; }
 
 .task-actions {
   width: 100px;
@@ -233,30 +250,21 @@ body {
       bottom: 50%;
       transform: translate(-50%, -50%);
       cursor: pointer; }
-    .task-actions__button--delete:before {
-      content: '';
-      height: 1px;
-      width: 20px;
-      background-color: #E9EDED;
+    .task-actions__button--delete::before {
       position: absolute;
       top: 20px;
       right: -10px;
-      transform: rotate(90deg); }
+      width: 20px;
+      height: 1px;
+      transform: rotate(90deg);
+      background-color: #E9EDED;
+      content: ''; }
 
 .task-icon:hover .task-icon__background {
   fill: #26B999; }
 
 .task-icon:hover .task-icon__tick {
   fill: #FFF; }
-
-.task-icon__background, .task-icon__tick {
-  transition: fill 0.2s ease; }
-
-.task-icon__background {
-  fill: #FFF; }
-
-.task-icon__tick {
-  fill: #26B999; }
 
 .task-icon--completed:hover .task-icon__background {
   fill: #FFF; }
@@ -270,6 +278,15 @@ body {
 .task-icon--completed__tick {
   fill: #FFF; }
 
+.task-icon__background, .task-icon__tick {
+  transition: fill 200ms ease; }
+
+.task-icon__background {
+  fill: #FFF; }
+
+.task-icon__tick {
+  fill: #26B999; }
+
 .trash-icon:hover path {
   fill: #E96E6E; }
 
@@ -280,8 +297,8 @@ body {
 .no-task {
   animation: fadeInFromNone 1s ease-in-out; }
   .no-task--hide {
-    transition: opacity 500ms ease-in-out;
-    opacity: 0; }
+    opacity: 0;
+    animation: fadeOff 500ms ease-in-out; }
   .no-task__text {
     padding-top: 40px;
     color: #BFBFBF;

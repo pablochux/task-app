@@ -23,9 +23,9 @@ $header-input-bg-color: #4DBFA5;
 
     background-color: $header-bg-color;
 
-    z-index: 3;
+    z-index: 3; // Over the rest of elements
 
-    animation: fadeInFromNone 1s ease-in-out;
+    animation: fadeInFromNone 1s ease-in-out; // Initial animation
 
     // Elements
     &__input{
@@ -44,9 +44,11 @@ $header-input-bg-color: #4DBFA5;
         font-size: 18px;
 
     }
+    // Placeholder text color
     &__input::-webkit-input-placeholder{
         color: $header-placeholder-color;
     }
+
     &__add-button{
         position: absolute;
         top: 15px;
@@ -58,16 +60,16 @@ $header-input-bg-color: #4DBFA5;
         border-radius: 50%;
 
         background-color: $header-text-color;
+    }
 
-        svg{
-            position: absolute;
-            top: 50%;
-            bottom: 50%;
+    &__add-button-svg{
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
 
-            width: 17px;
-            height: 16px;
+        width: 17px;
+        height: 16px;
 
-            transform: translate(-50%, -50%);
-        }
+        transform: translate(-50%, -50%);
     }
 }
